@@ -8,6 +8,8 @@ const mongoose = require("mongoose");
 const indexRouter = require('./routes/index');
 const questionRouter = require('./routes/question');
 
+require("dotenv").config();
+
 const app = express();
 
 // view engine setup
