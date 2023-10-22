@@ -11,11 +11,10 @@ router.get('/', async function(req, res, next) {
   res.render('index', { questions: questions });
 });
 
-
-module.exports = router;
-
 async function main() {
   await mongoose.connect(process.env["DATABASE_URL"]);
 }
 
 main().catch(err => console.log(err));
+
+module.exports = router;
