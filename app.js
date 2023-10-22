@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const mongoose = require("mongoose");
 
 const indexRouter = require('./routes/index');
 const questionRouter = require('./routes/question');
@@ -37,5 +38,11 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+async function main() {
+  await mongoose.connect(process.env["DATABASE_URL"]);
+}
+
+main().catch(err => console.log(err));
 
 module.exports = app;
