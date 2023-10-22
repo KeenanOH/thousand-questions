@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Thousand Questions</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Welcome to Thousand Questions</h1>
+    <p>A place for you to ask questions</p><br>
+    <form action="/question" method="POST">
+      <label for="name">Enter a question:</label>
+      <input type="text" name="name" id="name" />
+      <input type="submit" name="Add" />
+    </form>
+    <ol>
+      <% questions.forEach(function(question){ %>
+        <div class="question-container">
+          <li><%= question.name %></li>
+          <form action="/question/delete/<%= question.id %>" method="POST" class="delete-form">
+            <input type="submit" value="Delete" id="delete"/>
+          </form>
+        </div>
+      <% }); %>
+    </ol>
+  </body>
+</html>
